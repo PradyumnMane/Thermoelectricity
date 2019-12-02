@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<!-- saved from url=(0146)http://localhost:2047/webbridge/html/webrenderer.html?targetaxis=application_window_mainwindow%24Geometry%2Fgraphics1&targetid=1&version=5.4.0.225 -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+    
+    <title>COMSOL web rendering</title>
+    <script src="./three.js.download"></script>
+    <script src="./projector.js.download"></script>
+    <script src="./canvasrenderer.js.download"></script>
+    <script src="./loadutil.js.download"></script>
+    <style>
+      body {
+      margin : 0;
+      overflow: hidden;
+      }
+    </style>
+  </head>
+  <body marginwidth="0" marginheight="0" style="touch-action: none;">
+    <div id="render-output"><canvas width="665" height="431" style="position: absolute; left: 0px; top: 0px; width: 665px; height: 431px; visibility: visible;"></canvas><canvas width="665" height="431" style="position: absolute; left: 0px; top: 0px; visibility: hidden;"></canvas></div>
+    <script type="text/javascript">
+    
+      var params = COMSOL.getQueryParams();
+      var version = params["version"];
+      
+      COMSOL.loadScriptSync(document, "../js/util.js?" + version);
+      COMSOL.loadScriptSync(document, "../js/nativeprotocol.js?" + version);
+      COMSOL.loadScriptSync(document, "../js/webrenderer.js?" + version);
+
+      window.onload = function() {
+        var renderTarget = document.getElementById("render-output");
+        var webRenderer = new COMSOL.WebRenderer(renderTarget);
+        webRenderer.initialize();
+        window.addEventListener("resize", function() {
+          webRenderer.onResize();
+        });
+      };
+    </script><script src="./util.js.download"></script><script src="./nativeprotocol.js.download"></script><script src="./webrenderer.js.download"></script>
+  
+
+</body></html>

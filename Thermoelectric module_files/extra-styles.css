@@ -1,0 +1,142 @@
+@CHARSET "UTF-8";
+/**
+ * Copyright (c) 1998-2014 by COMSOL AB
+ * $Revision: $  $Date: $
+ */
+
+/*
+* This css is applied as normal css to certain elements that are hard to style with
+* normal RWT-methods.
+* 
+* To play well with RWT following points should be taken into account:
+*  1. Don't use css that will affect the size of the element (at least test 
+*     how it works; RWT wants to know the element sizes server side because of 
+*     how it makes layouts, but there is some code that should communicate the 
+*     actual rendered sizes back to server, so maybe little tweaks could work)
+*  2. Test on all supported browsers (RWT won't guarantee any browser-compatibility for
+*     custom CSS)
+*
+* NOTE: because RAP adds all its styling inline to the element, it is important to add !important to all 
+*   style directives that is the only way to override inline styles from CSS,
+*   normal specificity rules still apply when deciding which of the !important declarations wins;
+*   other possible solution would be to remove the RAP-styles with JavaScript when applying the class 
+*   (element.style.removeProperty/element.style.removeAttribute for attributes to control from CSS)
+*
+* NOTE 2: with current technique, any settings that the user can set in Form Editor should not be 
+*   set in the css file, as the !important declaration would override them.
+*
+*/
+
+/*
+* If this file is changed, make sure that obsolete cached version is not used. This can be done
+* by incrementing the version number added to query for loading the file in "additionalHeaders" element in 
+* webguiclient/com.comsol.webguiclient/plugin.xml's extension point org.eclipse.rap.ui.branding
+*/
+
+/** Buttons */
+
+.csbutton, .csbutton div {
+  cursor: pointer !important;
+}
+
+.csbutton.disabled, .csbutton.disabled div {
+  cursor: default !important;
+}
+
+.csbutton.big {
+  border: 1px solid #9d9d9d !important;
+}
+
+.csbutton.big-transparent {
+  border: 1px solid transparent !important; /** To avoid moving the element when we add a border (on hover e.g.). */
+}
+
+.csbutton.big.selected,
+.csbutton.big-transparent.selected {
+  border: 1px solid #D6D6D8 !important;
+} 
+
+.csbutton.big.disabled {
+  border: 1px solid #D6D6D8 !important;
+}
+
+.csbutton.big.default-bg {
+  background: linear-gradient(to bottom, #F6F7F9 0%,#EAEAEB 100%) !important;
+}
+
+.csbutton.big-transparent.default-bg {
+  background: none !important;
+}
+
+.csbutton.default-bg.disabled {
+  background: none !important;
+}
+
+.csbutton.standard.selected,
+.csbutton.big.selected,
+.csbutton.big-transparent.selected {
+  background: #A0D3FA !important;
+}
+
+/* Use class mouseover instead of hover selector for cleaner state transitions when disabled */
+.csbutton.comsolapp.mouseover {
+  background: #b7ddfa !important;
+}
+
+.csbutton.comsolweb.mouseover {
+  background: #e8ebf2 !important;
+}
+
+.csbutton.comsolapp.pressed {
+  background: linear-gradient(to bottom, #d5d5d5 0%, #eaeaea 100%) !important;
+}
+
+.csbutton.comsolweb.pressed {
+	background: linear-gradient(to bottom, #e8ebf2 0%,#bcc1c4 48%,#bcc1c4 50%,#e8ebf2 100%) !important;
+}
+
+/** Toolbar buttons */
+
+.toolbarbutton, .toolbarbutton div {
+  cursor: pointer !important;
+}
+
+.toolbarbutton.disabled, .toolbarbutton.disabled div {
+  cursor: default !important;
+}
+
+.toolbarbutton {
+  border: 1px solid transparent !important; /** To avoid moving the element when we add a border (on hover e.g.). */
+}
+
+.toolbarbutton.comsolapp.selected, .toolbarbutton.comsolweb.selected {
+  border: 1px solid #0091ff !important;
+  background: #A0D3FA !important;
+}
+
+.toolbarbutton.comsolapp.mouseover {
+  border: 1px solid #0091ff !important;
+  background: #b7ddfa !important;
+}
+
+.toolbarbutton.comsolweb.mouseover {
+  background: #e8ebf2 !important;
+}
+
+.toolbarbutton.comsolapp.pressed {
+  background: linear-gradient(to bottom, #d5d5d5 0%, #eaeaea 100%) !important;
+}
+
+.toolbarbutton.comsolweb.pressed {
+  background: linear-gradient(to bottom, #e8ebf2 0%,#bcc1c4 48%,#bcc1c4 50%,#e8ebf2 100%) !important;
+}
+
+/** Other */
+
+.csdivider canvas {
+  position: absolute;
+}
+
+.cstextarea {
+  padding: 0px !important;
+}
